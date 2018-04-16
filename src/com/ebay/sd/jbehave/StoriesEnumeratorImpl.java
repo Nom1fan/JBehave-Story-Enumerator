@@ -13,7 +13,7 @@ public class StoriesEnumeratorImpl implements StoriesEnumerator {
         FileReader fileReader = new FileReader(path);
         FileWriter fileWriter = new FileWriter(path+"_enumerated");
 
-        Pattern pattern = Pattern.compile("Scenario:\\[[1-9]\\]");
+        Pattern pattern = Pattern.compile("Scenario:\\[.*\\]");
 
         String line;
         String newScenarioLine = "Scenario:[%d]";
