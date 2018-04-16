@@ -1,8 +1,8 @@
 <idea-plugin version="2">
-    <id>com.your.company.unique.plugin.id</id>
-    <name>Plugin display name here</name>
+    <id>com.ebay.sd.jbehave</id>
+    <name>JBehave Story Enumerator</name>
     <version>1.0</version>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <vendor email="mmerhav@ebay.com" url="http://www.ebay.com">ebay</vendor>
 
     <description><![CDATA[
       Enter short description for your plugin here.<br>
@@ -31,7 +31,7 @@
     <actions>
         <!-- Add your actions here -->
         <action id="JbehaveEnumerator.Action" class="com.ebay.sd.jbehave.StoriesEnumeratorAction" text="Enumerate Story"
-                description="run stories enumerator">
+                description="Run stories enumerator">
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
         </action>
     </actions>
