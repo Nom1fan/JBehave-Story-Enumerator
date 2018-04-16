@@ -8,48 +8,51 @@ import java.util.regex.Pattern;
  * Created by mmerhav on 20/3/2017.
  */
 public class StoriesEnumeratorImpl implements StoriesEnumerator {
-    @Override
-    public void enumerateStory(String path, int startFrom) throws IOException {
-        FileReader fileReader = new FileReader(path);
-        FileWriter fileWriter = new FileWriter(path+"_enumerated");
 
-        Pattern pattern = Pattern.compile("Scenario:\\[.*\\]");
+	@Override
+	public void enumerateStory(String path, int startFrom) throws IOException {
+		File backupFile = backupOriginalFile(path);
 
-        String line;
-        String newScenarioLine = "Scenario:[%d]";
-        int scenarioNum = startFrom;
+		FileReader fileReader = new FileReader(backupFile);
+		FileWriter fileWriter = new FileWriter(path);
 
-        try {
+		enumerate(startFrom, fileReader, fileWriter);
+	}
 
-            BufferedReader bufferedReader =
-                    new BufferedReader(fileReader);
+	private void enumerate(int startFrom, FileReader fileReader, FileWriter fileWriter) throws IOException {
+		Pattern pattern = Pattern.compile("Scenario:\\[.*\\]");
 
-            BufferedWriter bufferedWriter =
-                    new BufferedWriter(fileWriter);
+		String line;
+		String newScenarioLine = "Scenario:[%d]";
+		int scenarioNum = startFrom;
 
-            while((line = bufferedReader.readLine()) != null) {
-                Matcher matcher = pattern.matcher(line);
-                if (matcher.find()) {
-                    String enumeratedScenario = String.format(newScenarioLine, scenarioNum);
-                    String enumeratedLine = line.replaceFirst("Scenario:\\[(.*)\\]", enumeratedScenario);
-                    bufferedWriter.write(enumeratedLine);
-                    bufferedWriter.newLine();
-                    scenarioNum++;
-                }
-                else {
-                    bufferedWriter.write(line);
-                    bufferedWriter.newLine();
-                }
-            }
+		BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-            bufferedReader.close();
-            bufferedWriter.close();
-        }
-        catch(FileNotFoundException ex) {
-            System.out.println(
-                    "Unable to open file '" +
-                            path + "'");
-        }
+		BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-    }
+		while ((line = bufferedReader.readLine()) != null) {
+			Matcher matcher = pattern.matcher(line);
+			if (matcher.find()) {
+				String enumeratedScenario = String.format(newScenarioLine, scenarioNum);
+				String enumeratedLine = line.replaceFirst("Scenario:\\[(.*)\\]", enumeratedScenario);
+				bufferedWriter.write(enumeratedLine);
+				bufferedWriter.newLine();
+				scenarioNum++;
+			} else {
+				bufferedWriter.write(line);
+				bufferedWriter.newLine();
+			}
+		}
+
+		bufferedReader.close();
+		bufferedWriter.close();
+	}
+
+	private File backupOriginalFile(String path) {
+		File oldFile = new File(path);
+		File backupFile = new File(path + "_backup");
+
+		oldFile.renameTo(backupFile);
+		return backupFile;
+	}
 }
