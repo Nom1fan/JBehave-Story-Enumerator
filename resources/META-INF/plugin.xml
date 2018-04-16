@@ -1,16 +1,16 @@
-<idea-plugin version="2">
+<idea-plugin>
     <id>com.ebay.sd.jbehave</id>
     <name>JBehave Story Enumerator</name>
     <version>1.0</version>
     <vendor email="mmerhav@ebay.com" url="http://www.ebay.com">ebay</vendor>
 
     <description><![CDATA[
-      Enter short description for your plugin here.<br>
+      Enumerates all scenarios in story incremented from given number<br>
       <em>most HTML tags may be used</em>
     ]]></description>
 
     <change-notes><![CDATA[
-      Add change notes here.<br>
+     Initial release<br>
       <em>most HTML tags may be used</em>
     ]]>
     </change-notes>
