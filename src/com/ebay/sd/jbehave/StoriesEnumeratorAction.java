@@ -18,18 +18,22 @@ public class StoriesEnumeratorAction extends AnAction {
 	public void actionPerformed(AnActionEvent e) {
 		System.out.println(e);
 		String startFrom = Messages.showInputDialog("Give enumerator start value", "Title", null, "1", null);
-		EditorImpl editor = (EditorImpl) e.getDataContext().getData("editor");
 
-		Objects.requireNonNull(editor, startFrom);
+		if (startFrom != null) {
 
-		VirtualFile virtualFile = editor.getVirtualFile();
+			EditorImpl editor = (EditorImpl) e.getDataContext().getData("editor");
 
-		System.out.println(startFrom);
-		StoriesEnumerator storiesEnumerator = new StoriesEnumeratorImpl();
-		try {
-			storiesEnumerator.enumerateStory(virtualFile.getCanonicalPath(), Integer.valueOf(startFrom));
-		} catch (IOException e1) {
-			e1.printStackTrace();
+			Objects.requireNonNull(editor, startFrom);
+
+			VirtualFile virtualFile = editor.getVirtualFile();
+
+			System.out.println(startFrom);
+			StoriesEnumerator storiesEnumerator = new StoriesEnumeratorImpl();
+			try {
+				storiesEnumerator.enumerateStory(virtualFile.getCanonicalPath(), Integer.valueOf(startFrom));
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		}
 	}
 }
