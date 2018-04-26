@@ -20,7 +20,7 @@ public class StoriesEnumeratorImpl implements StoriesEnumerator {
 	}
 
 	private void enumerate(int startFrom, FileReader fileReader, FileWriter fileWriter) throws IOException {
-		Pattern pattern = Pattern.compile("Scenario:\\[.*\\]");
+		Pattern pattern = Pattern.compile("Scenario:\\[[^0].*\\]");
 
 		String line;
 		String newScenarioLine = "Scenario:[%d]";

@@ -1,39 +1,38 @@
 <idea-plugin>
-    <id>com.ebay.sd.jbehave</id>
-    <name>JBehave Story Enumerator</name>
-    <version>1.0</version>
-    <vendor email="mmerhav@ebay.com" url="http://www.ebay.com">ebay</vendor>
+  <id>com.ebay.sd.jbehave</id>
+  <name>JBehave Story Enumerator</name>
+  <version>2.0</version>
+  <vendor email="mmerhav@ebay.com" url="http://www.ebay.com">ebay</vendor>
 
-    <description><![CDATA[
-      Enumerates all scenarios in story incremented from given number<br>
-      <em>most HTML tags may be used</em>
+  <description><![CDATA[
+      Enumerates all scenarios in story incremented from given number
     ]]></description>
 
-    <change-notes><![CDATA[
-     Initial release<br>
-      <em>most HTML tags may be used</em>
+  <change-notes><![CDATA[
+     <li>Fixed crash on cancel</li>
+     <li>Added feature: skip Scenario:[0]</li>
     ]]>
-    </change-notes>
+  </change-notes>
 
-    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-    <idea-version since-build="145.0"/>
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="145.0"/>
 
-    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-         on how to target different products -->
-    <!-- uncomment to enable plugin in all products
-    <depends>com.intellij.modules.lang</depends>
-    -->
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
 
-    <extensions defaultExtensionNs="com.intellij">
-        <!-- Add your extensions here -->
-    </extensions>
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
 
-    <actions>
-        <!-- Add your actions here -->
-        <action id="JbehaveEnumerator.Action" class="com.ebay.sd.jbehave.StoriesEnumeratorAction" text="Enumerate Story"
-                description="Run stories enumerator">
-            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
-        </action>
-    </actions>
+  <actions>
+    <!-- Add your actions here -->
+    <action id="JbehaveEnumerator.Action" class="com.ebay.sd.jbehave.StoriesEnumeratorAction" text="Enumerate Story"
+            description="Run stories enumerator">
+      <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+    </action>
+  </actions>
 
 </idea-plugin>
