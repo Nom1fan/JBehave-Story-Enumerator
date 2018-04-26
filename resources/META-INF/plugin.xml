@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>com.ebay.sd.jbehave</id>
   <name>JBehave Story Enumerator</name>
-  <version>2.0</version>
+  <version>3.0-SNAPSHOT</version>
   <vendor email="mmerhav@ebay.com" url="http://www.ebay.com">ebay</vendor>
 
   <description><![CDATA[
